@@ -404,6 +404,125 @@
         .success-ring--delay-3 {
             animation-delay: 1.8s;
         }
+
+        /* Hero obrigado — dark + branco e azul */
+        #hero-obrigado {
+            background: #000000;
+        }
+
+        #hero-obrigado .obrigado-bg-grid {
+            background-size: 50px 50px;
+            background-image: linear-gradient(to right, rgba(0, 102, 255, 0.06) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 102, 255, 0.06) 1px, transparent 1px);
+        }
+
+        #hero-obrigado .success-ring {
+            border-color: rgba(0, 102, 255, 0.45);
+        }
+
+        #hero-obrigado .text-gradient-blue {
+            display: inline;
+            background: linear-gradient(to right, #FFFFFF, #0066FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        @media (max-width: 767px) {
+            #hero-obrigado .text-gradient-blue {
+                display: inline-block;
+                background: none;
+                -webkit-background-clip: unset;
+                background-clip: unset;
+                -webkit-text-fill-color: #0066FF;
+                color: #0066FF;
+            }
+        }
+
+        /* Hero Summit — vídeo de fundo */
+        .hero-video-container {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .hero-youtube-player-slot,
+        .hero-youtube-player-slot iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 177.78vh;
+            height: 100vh;
+            min-width: 100vw;
+            min-height: 56.25vw;
+            transform: translate(-50%, -50%) scale(1.02);
+            border: 0;
+            pointer-events: none;
+        }
+
+        .hero-video-overlay {
+            background: linear-gradient(180deg,
+                    rgba(0, 0, 0, 0.42) 0%,
+                    rgba(0, 0, 0, 0.28) 50%,
+                    rgba(0, 0, 0, 0.38) 100%);
+        }
+
+        .hero-video-overlay::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.18);
+        }
+
+        .hero-location-link {
+            color: inherit;
+            text-decoration: none;
+            transition: opacity 0.2s ease, color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .hero-location-link:hover {
+            opacity: 1;
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .hero-location-address {
+            font-size: 10px;
+            line-height: 1.35;
+        }
+
+        .hero-location-break {
+            display: block;
+        }
+
+        .hero-location-sep {
+            display: none;
+        }
+
+        @media (min-width: 640px) {
+            .hero-location-address {
+                font-size: 0.75rem;
+                white-space: nowrap;
+            }
+
+            .hero-location-break {
+                display: none;
+            }
+
+            .hero-location-sep {
+                display: inline;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero-location-address {
+                font-size: 0.875rem;
+            }
+        }
     </style>
 </head>
 
@@ -414,21 +533,21 @@
             height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <!-- ============================= HERO OBRIGADO ============================= -->
-    <main id="hero"
+    <!-- ============================= HERO OBRIGADO (dark + branco e azul) ============================= -->
+    <main id="hero-obrigado"
         class="relative min-h-screen flex items-center justify-center overflow-hidden w-full py-16 px-6">
-        <div class="absolute inset-0 z-0 overflow-hidden bg-brand-bg">
-            <div class="absolute inset-0 bg-grid-gold opacity-15 z-10"></div>
-            <div class="absolute inset-0 bg-gradient-to-r from-brand-bg/92 via-brand-bg/55 to-brand-bg/92 z-10"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-brand-bg/55 via-brand-bg/10 to-brand-bg z-10"></div>
+        <div class="absolute inset-0 z-0 overflow-hidden bg-black">
+            <div class="absolute inset-0 obrigado-bg-grid opacity-60 z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-black/95 via-[#001433]/40 to-black/95 z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black z-10"></div>
             <div class="absolute inset-0 bg-noise z-10 mix-blend-overlay"></div>
         </div>
 
         <div
-            class="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-brand-primary/10 rounded-full blur-[150px] pointer-events-none z-0 animate-float">
+            class="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-[#0066FF]/15 rounded-full blur-[150px] pointer-events-none z-0 animate-float">
         </div>
         <div
-            class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-brand-accent/10 rounded-full blur-[180px] pointer-events-none z-0 animate-float-delayed">
+            class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#0052CC]/10 rounded-full blur-[180px] pointer-events-none z-0 animate-float-delayed">
         </div>
 
         <div class="container mx-auto max-w-4xl relative z-10">
@@ -440,39 +559,39 @@
                     <span class="success-ring success-ring--delay-2 animate-ring-pulse"></span>
                     <span class="success-ring success-ring--delay-3 animate-ring-pulse"></span>
                     <div
-                        class="relative w-20 h-20 md:w-24 md:h-24 rounded-full bg-brand-primary flex items-center justify-center shadow-[0_0_60px_rgba(248,193,0,0.45)] animate-check-pop">
-                        <i class="fas fa-check text-black text-3xl md:text-4xl"></i>
+                        class="relative w-20 h-20 md:w-24 md:h-24 rounded-full bg-[#0066FF] flex items-center justify-center shadow-[0_0_60px_rgba(0,102,255,0.45)] animate-check-pop">
+                        <i class="fas fa-check text-white text-3xl md:text-4xl"></i>
                     </div>
                 </div>
 
                 <div class="flex items-center justify-center gap-4 w-full" data-aos="fade-up"
                     data-aos-duration="1200" data-aos-delay="400">
-                    <div class="h-px w-12 bg-gradient-to-r from-transparent to-brand-primary/50"></div>
+                    <div class="h-px w-12 bg-gradient-to-r from-transparent to-[#0066FF]/50"></div>
                     <span
-                        class="text-brand-primary text-[10px] font-bold uppercase tracking-[0.4em] drop-shadow-[0_0_10px_rgba(212,175,55,0.3)]">Inscrição
+                        class="text-[#0066FF] text-[10px] font-bold uppercase tracking-[0.4em] drop-shadow-[0_0_10px_rgba(0,102,255,0.3)]">Inscrição
                         Confirmada</span>
-                    <div class="h-px w-12 bg-gradient-to-l from-transparent to-brand-primary/50"></div>
+                    <div class="h-px w-12 bg-gradient-to-l from-transparent to-[#0066FF]/50"></div>
                 </div>
 
-                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase font-black tracking-tight leading-[1.05] text-brand-textPrimary max-w-3xl mx-auto"
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase font-black tracking-tight leading-[1.05] text-white max-w-3xl mx-auto"
                     data-aos="fade-up" data-aos-duration="1200" data-aos-delay="600">
-                    <span class="text-gradient-gold">Parabéns!</span><br>
-                    <span class="font-light text-2xl sm:text-3xl md:text-4xl lg:text-5xl block mt-3 md:mt-4">
+                    <span class="text-gradient-blue">Parabéns!</span><br>
+                    <span class="font-light text-2xl sm:text-3xl md:text-4xl lg:text-5xl block mt-3 md:mt-4 text-white/90">
                         Sua inscrição foi confirmada com sucesso.
                     </span>
                 </h1>
 
-                <div class="h-px w-24 bg-gradient-to-r from-transparent via-brand-primary/60 to-transparent"
+                <div class="h-px w-24 bg-gradient-to-r from-transparent via-[#0066FF]/60 to-transparent"
                     data-aos="fade-up" data-aos-duration="1200" data-aos-delay="800"></div>
 
-                <p class="text-base sm:text-lg md:text-xl text-brand-textSecondary max-w-3xl mx-auto font-light leading-relaxed"
+                <p class="text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto font-light leading-relaxed"
                     data-aos="fade-up" data-aos-duration="1200" data-aos-delay="900">
                     Agora aproveite essa oportunidade exclusiva para garantir o seu ingresso no
-                    <strong class="text-brand-primary font-bold">Summit da Personal Trainer Academy</strong> —
+                    <strong class="text-[#0066FF] font-bold">Summit da Personal Trainer Academy</strong> —
                     o maior encontro de profissionais da Educação Física do Brasil.
                 </p>
 
-                <p class="text-base sm:text-lg md:text-xl text-brand-textSecondary/80 max-w-3xl mx-auto font-light leading-relaxed"
+                <p class="text-base sm:text-lg md:text-xl text-white/70 max-w-3xl mx-auto font-light leading-relaxed"
                     data-aos="fade-up" data-aos-duration="1200" data-aos-delay="1100">
                     Serão <strong class="text-white font-medium">2 dias de conteúdo prático, networking e
                         estratégias</strong> que podem transformar sua carreira e acelerar seus resultados no
@@ -482,7 +601,7 @@
                 <div class="pt-2 w-full flex flex-col sm:flex-row items-center justify-center gap-4"
                     data-aos="fade-up" data-aos-duration="1200" data-aos-delay="1300">
                     <a href="#planos"
-                        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-primary text-brand-bg py-4 px-6 md:py-5 md:px-10 whitespace-nowrap rounded-xl font-black uppercase tracking-[0.18em] text-sm md:text-base hover:bg-brand-primaryHover hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(248,193,0,0.35)] cursor-pointer no-underline">
+                        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0066FF] text-white py-4 px-6 md:py-5 md:px-10 whitespace-nowrap rounded-xl font-black uppercase tracking-[0.18em] text-sm md:text-base hover:bg-[#0052CC] hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(0,102,255,0.35)] cursor-pointer no-underline">
                         Garantir meu ingresso
                         <i class="fas fa-arrow-right text-xs"></i>
                     </a>
@@ -490,6 +609,90 @@
             </div>
         </div>
     </main>
+
+    <!-- ============================= HERO SUMMIT ============================= -->
+    <header id="hero" class="relative min-h-screen flex flex-col pt-6 sm:pt-10 lg:pt-8 overflow-hidden w-full">
+        <div class="absolute inset-0 z-0 overflow-hidden bg-brand-bg">
+            <div class="hero-video-container pointer-events-none" aria-hidden="true">
+                <div id="hero-youtube-player" class="hero-youtube-player-slot"></div>
+            </div>
+            <div class="hero-video-overlay absolute inset-0 z-[1] pointer-events-none" aria-hidden="true"></div>
+
+            <div class="absolute inset-0 bg-grid-gold opacity-15 z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-bg/92 via-brand-bg/55 to-brand-bg/92 z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-brand-bg/55 via-brand-bg/10 to-brand-bg z-10"></div>
+        </div>
+
+        <div
+            class="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-brand-primary/10 rounded-full blur-[150px] pointer-events-none z-0 animate-float">
+        </div>
+        <div
+            class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-brand-accent/10 rounded-full blur-[180px] pointer-events-none z-0 animate-float-delayed">
+        </div>
+
+        <div
+            class="container mx-auto px-6 max-w-4xl relative z-10 flex flex-col flex-1 min-h-0 w-full pt-6 md:pt-10">
+            <div class="w-full mx-auto flex flex-col items-center text-center space-y-6 md:space-y-7 flex-1 justify-center">
+
+                <img src="assets/logoSummit.svg" alt="Summit Logo" class="h-20 w-auto object-contain md:hidden"
+                    data-aos="fade-down" data-aos-duration="1500" data-aos-delay="100">
+
+                <div class="flex items-center justify-center gap-4 w-full" data-aos="fade-up" data-aos-duration="1500"
+                    data-aos-delay="500">
+                    <div class="h-px w-12 bg-gradient-to-r from-transparent to-brand-primary/50"></div>
+                    <span
+                        class="text-brand-primary text-[10px] font-bold uppercase tracking-[0.4em] drop-shadow-[0_0_10px_rgba(212,175,55,0.3)]">Summit
+                        Personal Trainer Academy 2026</span>
+                    <div class="h-px w-12 bg-gradient-to-l from-transparent to-brand-primary/50"></div>
+                </div>
+
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] xl:text-5xl uppercase font-light tracking-tight leading-[1.15] text-brand-textPrimary max-w-3xl mx-auto"
+                    data-aos="fade-up" data-aos-duration="1500" data-aos-delay="900">
+                    O evento que transforma
+                    <span class="font-bold text-gradient-gold"> bons profissionais em profissionais reconhecidos.</span>
+                </h2>
+
+                <p class="text-base sm:text-lg md:text-xl text-brand-textSecondary max-w-3xl lg:max-w-4xl mx-auto font-light leading-snug md:leading-relaxed"
+                    data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1300">
+                    O Summit Personal Trainer Academy 2026 reúne os maiores nomes do mercado para te entregar, em 2
+                    dias, o método completo de posicionamento, conteúdo e vendas que os personais que mais crescem no
+                    Brasil estão usando agora.
+                </p>
+
+                <div class="pt-2 w-full flex flex-col sm:flex-row items-center justify-center" data-aos="fade-up"
+                    data-aos-duration="1500" data-aos-delay="1500">
+                    <a href="#planos"
+                        class="w-full sm:w-auto inline-flex items-center justify-center bg-brand-primary text-brand-bg py-4 px-6 md:py-5 md:px-8 whitespace-nowrap rounded-xl font-black uppercase tracking-[0.2em] text-sm md:text-base hover:bg-brand-primaryHover hover:scale-105 transition-all duration-300 shadow-xl cursor-pointer no-underline">
+                        Garantir minha vaga
+                    </a>
+                </div>
+            </div>
+
+            <div class="w-full pb-10 md:pb-14 lg:pb-16 mt-auto shrink-0" data-aos="fade-up" data-aos-duration="1500"
+                data-aos-delay="1700">
+                <div class="flex flex-row items-stretch justify-center w-full max-w-lg sm:max-w-none mx-auto gap-2 sm:gap-4 md:gap-0">
+                    <div class="flex-1 flex flex-col items-center justify-center text-center px-1 sm:px-4 min-w-fit">
+                        <span class="text-brand-primary font-black text-4xl sm:text-6xl md:text-[90px] lg:text-[100px] leading-none mb-1 sm:mb-2 tracking-tighter whitespace-nowrap">17&nbsp;e&nbsp;18</span>
+                        <span class="text-brand-primary font-bold uppercase tracking-[0.1em] sm:tracking-[0.15em] text-[10px] sm:text-sm md:text-base whitespace-nowrap">Outubro</span>
+                    </div>
+                    <div class="w-px self-stretch min-h-[3.5rem] sm:min-h-[5rem] md:min-h-[6rem] bg-brand-primary/40 shrink-0"></div>
+                    <div class="flex-1 flex flex-col items-center justify-center text-center px-1 sm:px-4 min-w-0">
+                        <span class="text-brand-primary font-black text-4xl sm:text-6xl md:text-[110px] leading-none mb-1 sm:mb-2 tracking-tighter">2</span>
+                        <span class="text-brand-primary font-bold uppercase tracking-[0.1em] sm:tracking-[0.15em] text-[10px] sm:text-sm md:text-base leading-tight">Dias de Imersão</span>
+                    </div>
+                    <div class="w-px self-stretch min-h-[3.5rem] sm:min-h-[5rem] md:min-h-[6rem] bg-brand-primary/40 shrink-0"></div>
+                    <div class="flex-1 flex flex-col items-center justify-center text-center px-1 sm:px-4 min-w-fit">
+                        <span class="text-brand-primary font-black text-4xl sm:text-6xl md:text-[90px] leading-none mb-1 sm:mb-4 tracking-tighter"><i class="fas fa-map-marker-alt"></i></span>
+                        <span class="text-brand-primary font-bold uppercase tracking-[0.1em] sm:tracking-[0.15em] text-[10px] sm:text-sm md:text-base leading-tight">Bosco</span>
+                        <a href="https://www.google.com/maps/search/?api=1&amp;query=Bosco+Gastronomia+e+Eventos,+Av.+Tr%C3%AAs+Marias,+274,+S%C3%A3o+Braz,+Curitiba,+PR,+82310-000"
+                            target="_blank" rel="noopener noreferrer"
+                            class="hero-location-link hero-location-address text-brand-primary font-medium normal-case tracking-normal mt-0.5 opacity-90"
+                            aria-label="Abrir Bosco Gastronomia e Eventos no Google Maps">Av. Três Marias, 274<span class="hero-location-sep"> · </span><br class="hero-location-break">São Braz, Curitiba</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <!-- ============================= MARQUEE ============================= -->
     <div id="destaques"
@@ -1294,9 +1497,11 @@
                     <div class="faq-answer">
                         <p
                             class="text-brand-textSecondary text-base leading-relaxed px-6 md:px-8 pb-6 md:pb-8 border-t border-white/5 pt-5 bg-black/20">
-                            Em <strong class="text-brand-textPrimary font-medium">Curitiba</strong>, nos dias
-                            <strong class="text-brand-textPrimary font-medium">17 e 18 de outubro</strong>. O
-                            endereço exato será divulgado após a confirmação da sua inscrição.
+                            Nos dias <strong class="text-brand-textPrimary font-medium">17 e 18 de outubro</strong>, no
+                            <a href="https://www.google.com/maps/search/?api=1&amp;query=Bosco+Gastronomia+e+Eventos,+Av.+Tr%C3%AAs+Marias,+274,+S%C3%A3o+Braz,+Curitiba,+PR,+82310-000"
+                                target="_blank" rel="noopener noreferrer"
+                                class="text-brand-primary font-medium underline underline-offset-2 hover:text-white transition-colors">Bosco
+                                Gastronomia e Eventos — Av. Três Marias, 274, São Braz, Curitiba - PR, 82310-000</a>.
                         </p>
                     </div>
                 </div>
@@ -1684,9 +1889,66 @@
         </div>
     </div>
 
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ once: true, offset: 30, duration: 1000, easing: 'ease-out-cubic' });
+
+        const HERO_YOUTUBE_ID = 'TaEph0S9Uxw';
+        let heroYoutubePlayer = null;
+
+        function initHeroYoutubePlayer() {
+            if (heroYoutubePlayer || !document.getElementById('hero-youtube-player')) return;
+
+            heroYoutubePlayer = new YT.Player('hero-youtube-player', {
+                videoId: HERO_YOUTUBE_ID,
+                playerVars: {
+                    autoplay: 1,
+                    mute: 1,
+                    loop: 1,
+                    playlist: HERO_YOUTUBE_ID,
+                    controls: 0,
+                    rel: 0,
+                    modestbranding: 1,
+                    playsinline: 1,
+                    iv_load_policy: 3,
+                    disablekb: 1,
+                    fs: 0,
+                    cc_load_policy: 0,
+                    enablejsapi: 1,
+                    origin: window.location.origin,
+                },
+                events: {
+                    onReady: (e) => {
+                        e.target.mute();
+                        e.target.playVideo();
+                    },
+                    onStateChange: (e) => {
+                        if (e.data === YT.PlayerState.ENDED) {
+                            e.target.seekTo(0, true);
+                            e.target.playVideo();
+                        }
+                    },
+                },
+            });
+        }
+
+        if (window.YT && window.YT.Player) {
+            initHeroYoutubePlayer();
+        } else {
+            const prevReady = window.onYouTubeIframeAPIReady;
+            window.onYouTubeIframeAPIReady = function () {
+                if (typeof prevReady === 'function') prevReady();
+                initHeroYoutubePlayer();
+            };
+        }
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState !== 'visible' || !heroYoutubePlayer?.playVideo) return;
+            try {
+                heroYoutubePlayer.playVideo();
+            } catch (e) { }
+        });
 
         function getSearchParamInsensitive(searchParams, key) {
             const want = key.toLowerCase();
