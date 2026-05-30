@@ -309,15 +309,15 @@
             pointer-events: none;
         }
 
-        #professores .professor-card--andre-revealed .professor-card__media--swap .professor-card__img--from {
+        #professores .professor-card--swap-revealed .professor-card__media--swap .professor-card__img--from {
             opacity: 0 !important;
         }
 
-        #professores .professor-card--andre-revealed .professor-card__media--swap .professor-card__img--to {
+        #professores .professor-card--swap-revealed .professor-card__media--swap .professor-card__img--to {
             opacity: 1 !important;
         }
 
-        #professores .professor-card--andre-revealed:hover .professor-card__media--swap .professor-card__img--to {
+        #professores .professor-card--swap-revealed:hover .professor-card__media--swap .professor-card__img--to {
             transform: scale(1.04);
         }
 
@@ -869,8 +869,8 @@
 
             <div
                 class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-5 md:gap-6 lg:gap-8 max-w-md sm:max-w-none mx-auto">
-                <article class="professor-card professor-card--andre-reveal group" data-aos="fade-up"
-                    data-aos-delay="150" data-reveal-date="2026-05-22T18:00:00-03:00">
+                <article class="professor-card professor-card--swap-reveal group" data-aos="fade-up"
+                    data-aos-delay="150">
                     <div class="professor-card__media professor-card__media--swap">
                         <img class="professor-card__img professor-card__img--from" src="assets/prof03.png" alt=""
                             width="600" height="800" loading="eager" decoding="async">
@@ -879,30 +879,14 @@
                             fetchpriority="high" decoding="async">
                     </div>
                 </article>
-                <article class="professor-card professor-card--countdown group" data-aos="fade-up"
-                    data-aos-delay="230" data-reveal-date="2026-06-05T18:00:00-03:00">
-                    <div class="professor-card__media">
-                        <img src="assets/prof04.png" alt="" width="600" height="800" loading="lazy" decoding="async">
-                        <div class="professor-card__overlay">
-                            <div class="professor-reveal-timer" aria-live="polite">
-                                <div class="professor-reveal-timer__unit">
-                                    <span class="professor-reveal-timer__value" data-reveal-part="days">00</span>
-                                    <span class="professor-reveal-timer__label">Dias</span>
-                                </div>
-                                <div class="professor-reveal-timer__unit">
-                                    <span class="professor-reveal-timer__value" data-reveal-part="hours">00</span>
-                                    <span class="professor-reveal-timer__label">Hrs</span>
-                                </div>
-                                <div class="professor-reveal-timer__unit">
-                                    <span class="professor-reveal-timer__value" data-reveal-part="minutes">00</span>
-                                    <span class="professor-reveal-timer__label">Min</span>
-                                </div>
-                                <div class="professor-reveal-timer__unit">
-                                    <span class="professor-reveal-timer__value" data-reveal-part="seconds">00</span>
-                                    <span class="professor-reveal-timer__label">Seg</span>
-                                </div>
-                            </div>
-                        </div>
+                <article class="professor-card professor-card--swap-reveal group" data-aos="fade-up"
+                    data-aos-delay="230">
+                    <div class="professor-card__media professor-card__media--swap">
+                        <img class="professor-card__img professor-card__img--from" src="assets/prof04.png" alt=""
+                            width="600" height="800" loading="eager" decoding="async">
+                        <img class="professor-card__img professor-card__img--to" src="assets/w2-1.jpg.jpeg"
+                            alt="Rafael Tonietto — palestrante confirmado" width="600" height="800" loading="eager"
+                            decoding="async">
                     </div>
                 </article>
                 <article class="professor-card professor-card--countdown group" data-aos="fade-up"
@@ -2191,25 +2175,24 @@
             });
         });
 
-        // André Albuquerque — crossfade prof03 → andre.jpg
-        const andreRevealCard = document.querySelector('.professor-card--andre-reveal[data-reveal-date]');
+        // Palestrantes confirmados — crossfade placeholder → foto (1s)
+        const swapRevealCards = document.querySelectorAll('.professor-card--swap-reveal');
 
-        function playAndreCrossfade() {
-            if (!andreRevealCard || andreRevealCard.dataset.revealed === 'true') return;
-            andreRevealCard.dataset.revealed = 'true';
+        function playSwapCrossfade(card) {
+            if (!card || card.dataset.revealed === 'true') return;
+            card.dataset.revealed = 'true';
             requestAnimationFrame(() => {
-                andreRevealCard.classList.add('professor-card--andre-revealed');
+                card.classList.add('professor-card--swap-revealed');
             });
         }
 
-        function scheduleAndreReveal() {
-            if (!andreRevealCard) return;
-
-            const toImg = andreRevealCard.querySelector('.professor-card__img--to');
-            const src = toImg?.getAttribute('src') || 'assets/andre.jpg';
+        function scheduleSwapReveal(card, delayMs) {
+            const toImg = card.querySelector('.professor-card__img--to');
+            const src = toImg?.getAttribute('src');
+            if (!src) return;
 
             const runCrossfade = () => {
-                setTimeout(playAndreCrossfade, 400);
+                setTimeout(() => playSwapCrossfade(card), delayMs);
             };
 
             const preload = new Image();
@@ -2220,10 +2203,16 @@
             if (toImg?.complete) runCrossfade();
         }
 
+        function initSwapReveals() {
+            swapRevealCards.forEach((card, index) => {
+                scheduleSwapReveal(card, 400 + index * 200);
+            });
+        }
+
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', scheduleAndreReveal);
+            document.addEventListener('DOMContentLoaded', initSwapReveals);
         } else {
-            scheduleAndreReveal();
+            initSwapReveals();
         }
 
         // Professor reveal countdowns
